@@ -26,7 +26,8 @@ jobs:
 
       - name: Build
         run: |
-          nimble build -y -d:release
+          sudo apt-get install -y musl-tools
+          nimble build -y -d:release --passL:-static --gcc.exe:musl-gcc --gcc.linkerexe:musl-gcc
           mv ps1 ps1-linux-x86_64
 
       - name: Upload artifact
