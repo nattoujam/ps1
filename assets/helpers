@@ -12,7 +12,7 @@ ps1_prompt_char() {
   if echo "$SHELL" | grep -q zsh; then
     echo '%(?.%F{white}.%F{red})%#%f'
   else
-    [ $_PS1_R -eq 0 ] && echo '$' || echo $'\001\e[31m\002$\001\e[0m\002'
+    [ ${_PS1_R:-0} -eq 0 ] && echo '$' || echo $'\001\e[31m\002$\001\e[0m\002'
   fi
 }
 
