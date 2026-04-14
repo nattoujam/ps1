@@ -1,0 +1,62 @@
+name: Release
+
+on:
+  workflow_run:
+    workflows: ["Version Bump"]
+    types: [completed]
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    if: github.event.workflow_run.conclusion == 'success'
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release
+          fetch-depth: 0
+
+      - name: Install Nim
+        uses: iffy/install-nim@v5
+        with:
+          version: stable
+
+      - name: Build
+        run: |
+          nimble build -y -d:release
+          mv ps1 ps1-linux-x86_64
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: ps1-linux-x86_64
+          path: ps1-linux-x86_64
+
+  release:
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: release
+          fetch-depth: 0
+
+      - name: Get tag name
+        id: tag
+        run: echo "name=$(git describe --tags --exact-match HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist/
+          merge-multiple: true
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: ${{ steps.tag.outputs.name }}
+          generate_release_notes: true
+          files: dist/*
