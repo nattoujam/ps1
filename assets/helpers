@@ -12,12 +12,12 @@ ps1_prompt_char() {
   if echo "$SHELL" | grep -q zsh; then
     echo '%(?.%F{white}.%F{red})%#%f'
   else
-    [ $_PS1_R -eq 0 ] && echo '$' || echo '\001\e[31m\002$\001\e[0m\002'
+    [ $_PS1_R -eq 0 ] && echo '$' || echo $'\001\e[31m\002$\001\e[0m\002'
   fi
 }
 
 if echo "$SHELL" | grep -q zsh; then
-  precmd() { _PS1_R=$? }
+  precmd() { _PS1_R=$?; }
   
   autoload -Uz compinit && compinit
   autoload -Uz vcs_info
@@ -27,7 +27,7 @@ if echo "$SHELL" | grep -q zsh; then
   zstyle ':vcs_info:git:*' unstagedstr "%F{red}+"
   zstyle ':vcs_info:*' formats "%F{207}%c%u[%m:%b]%f"
   zstyle ':vcs_info:*' actionformats '[%b|%a]'
-  precmd(){ vcs_info }
+  precmd(){ vcs_info; }
 else
   PROMPT_COMMAND='_PS1_R=$?'
 fi
