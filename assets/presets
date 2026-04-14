@@ -1,0 +1,20 @@
+bash.minimal=\w $(ps1_prompt_char)
+zsh.minimal=%~ $(ps1_prompt_char)
+
+bash.simple=\u@\h:\w $(ps1_prompt_char)
+zsh.simple=%n@%m:%~ $(ps1_prompt_char)
+
+bash.default=\[\e[32m\]\u@\h\[\e[0m\]:\[\e[36m\]\w\[\e[0m\] \[\e[33m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.default=%F{green}%n@%m%f:%F{cyan}%~%f %F{yellow}${vcs_info_msg_0_}%f$PS1_NL$(ps1_prompt_char)
+
+bash.ember=\[\e[38;5;208m\]\u@\h\[\e[0m\]:\[\e[38;5;141m\]\w\[\e[0m\] \[\e[38;5;221m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.ember=%F{208}%n@%m%f:%F{141}%~%f %F{221}${vcs_info_msg_0_}%f$PS1_NL$(ps1_prompt_char)
+
+bash.slate=\[\e[38;5;67m\]\u@\h\[\e[0m\]:\[\e[38;5;110m\]\w\[\e[0m\] \[\e[38;5;109m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.slate=%F{67}%n@%m%f:%F{110}%~%f %F{109}${vcs_info_msg_0_}%f$PS1_NL$(ps1_prompt_char)
+
+bash.bloom=\[\e[38;5;170m\]\u@\h\[\e[0m\]:\[\e[38;5;183m\]\w\[\e[0m\] \[\e[38;5;218m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.bloom=%F{170}%n@%m%f:%F{183}%~%f %F{218}${vcs_info_msg_0_}%f$PS1_NL$(ps1_prompt_char)
+
+bash.mellow=\[\e[38;5;153m\]\u@\h\[\e[0m\]:\[\e[38;5;157m\]\w\[\e[0m\] \[\e[38;5;223m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.mellow=%F{153}%n@%m%f:%F{157}%~%f %F{223}${vcs_info_msg_0_}%f$PS1_NL$(ps1_prompt_char)
