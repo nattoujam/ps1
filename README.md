@@ -2,7 +2,7 @@
 ## install
 
 ```bash
-curl -fsSL https://github.com/nattoujam/ps1/releases/latest/download/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/nattoujam/ps1/release/install.sh | sh
 ```
 
 ## for Developer
