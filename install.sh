@@ -13,8 +13,12 @@ fi
 CONFIG_DIR="$USER_HOME/.config/nattoujam/ps1"
 
 # 対応プラットフォームの確認
-if [ "$OS" != "linux" ] || [ "$ARCH" != "x86_64" ]; then
-  echo "Error: prebuilt binary is only available for linux/x86_64 (got $OS/$ARCH)" >&2
+if [ "$OS/$ARCH" = "linux/x86_64" ]; then
+  :
+elif [ "$OS/$ARCH" = "darwin/arm64" ]; then
+  :
+else
+  echo "Error: $OS/$ARCH is not available platform." >&2
   exit 1
 fi
 
