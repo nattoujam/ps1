@@ -18,11 +18,12 @@ ps1_git_branch() {
     creset=$'\001\e[m\002'
   fi
 
-  local markers=""
-  git diff --cached --quiet 2>/dev/null || markers="${cgreen}!"
-  git diff --quiet 2>/dev/null || markers="${markers}${cred}+"
+  local staged="" unstaged="" conflict=""
+  git diff --cached --quiet 2>/dev/null || staged="${cgreen}!"
+  git diff --quiet 2>/dev/null || unstaged="${cred}+"
+  git ls-files --unmerged 2>/dev/null | grep -q . && conflict="${cred}~"
 
-  echo "${c207}${markers}[${username}:${branch}]${creset}"
+  echo "${c207}${staged}${unstaged}${conflict}[${username}:${branch}]${creset}"
 }
 
 ps1_prompt_char() {
