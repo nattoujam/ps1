@@ -1,7 +1,7 @@
 import std/[os, strutils, tables, sequtils, algorithm]
 
 const
-  Version     = "0.2.1"
+  Version     = "0.2.2"
   ConfigDir   = "~/.config/nattoujam/ps1"
   PresetsConf = ConfigDir / "presets"
   CurrentSh   = ConfigDir / "current"
