@@ -1,11 +1,20 @@
 PS1_NL=$'\n'
 
 ps1_git_branch() {
-  local branch
-  local username
+  local branch username
   branch=$(git symbolic-ref --short HEAD 2>/dev/null) || return
   username=$(git config user.name)
-  echo "[$username:$branch]"
+
+  local c207=$'\001\e[38;5;207m\002'
+  local cgreen=$'\001\e[32m\002'
+  local cred=$'\001\e[31m\002'
+  local creset=$'\001\e[m\002'
+
+  local markers=""
+  git diff --cached --quiet 2>/dev/null || markers="${cgreen}!"
+  git diff --quiet 2>/dev/null || markers="${markers}${cred}+"
+
+  echo "${c207}${markers}[${username}:${branch}]${creset}"
 }
 
 ps1_prompt_char() {
