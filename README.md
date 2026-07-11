@@ -2,7 +2,7 @@
 
 Shell prompt (PS1/PROMPT) preset switcher. Supports bash and zsh.
 
-> **Platform:** linux/x86_64 only
+Requires `bash` at runtime.
 
 ## Install
 
@@ -38,8 +38,10 @@ ps1 help          # show help
 
 ## For Developers
 
-Install locally:
+Drop `ps1` into your `PATH` and copy `assets/presets` and `assets/helpers` into `~/.config/nattoujam/ps1/`.
 
 ```bash
-nimble install_ps1
+install -m 0755 ps1 ~/.local/bin/ps1
+mkdir -p ~/.config/nattoujam/ps1
+cp assets/presets assets/helpers ~/.config/nattoujam/ps1/
 ```

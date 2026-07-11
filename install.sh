@@ -1,8 +1,6 @@
 #!/bin/sh
 set -e
 
-OS=$(uname -s | tr '[:upper:]' '[:lower:]')
-ARCH=$(uname -m)
 REPO="nattoujam/ps1"
 BIN_DIR="/usr/local/bin"
 if [ -n "$SUDO_USER" ]; then
@@ -12,26 +10,16 @@ else
 fi
 CONFIG_DIR="$USER_HOME/.config/nattoujam/ps1"
 
-# 対応プラットフォームの確認
-if [ "$OS/$ARCH" = "linux/x86_64" ]; then
-  :
-elif [ "$OS/$ARCH" = "darwin/arm64" ]; then
-  :
-else
-  echo "Error: $OS/$ARCH is not available platform." >&2
-  exit 1
-fi
-
-# バイナリをダウンロード
+# ps1 スクリプトをダウンロード
+RAW="https://raw.githubusercontent.com/$REPO/release"
 mkdir -p "$BIN_DIR"
-curl -fsSL "https://github.com/$REPO/releases/latest/download/ps1-$OS-$ARCH" -o "$BIN_DIR/ps1"
-chmod +x "$BIN_DIR/ps1"
+curl -fsSL "$RAW/ps1" -o "$BIN_DIR/ps1"
+chmod 0755 "$BIN_DIR/ps1"
 
 # assets をダウンロード
-RAW="https://raw.githubusercontent.com/$REPO/release/assets"
 mkdir -p "$CONFIG_DIR"
 for f in presets helpers; do
-  curl -fsSL "$RAW/$f" -o "$CONFIG_DIR/$f"
+  curl -fsSL "$RAW/assets/$f" -o "$CONFIG_DIR/$f"
   echo "installed: $CONFIG_DIR/$f"
 done
 

@@ -33,7 +33,7 @@ jobs:
           if [ -n "${{ github.event.inputs.version }}" ]; then
             NEXT="${{ github.event.inputs.version }}"
           else
-            CURRENT=$(grep '^version' ps1.nimble | sed 's/.*"\(.*\)".*/\1/')
+            CURRENT=$(grep '^VERSION=' ps1 | sed 's/.*"\(.*\)".*/\1/')
             IFS='.' read -r MAJOR MINOR PATCH <<< "$CURRENT"
             case "${{ github.event.inputs.bump }}" in
               major) NEXT="$((MAJOR+1)).0.0" ;;
@@ -44,19 +44,15 @@ jobs:
           echo "next=${NEXT}" >> "$GITHUB_OUTPUT"
           echo "Next version: ${NEXT}"
 
-      - name: Update version in ps1.nimble
+      - name: Update version in ps1
         run: |
-          sed -i 's/^version\s*=\s*"[^"]*"/version       = "${{ steps.ver.outputs.next }}"/' ps1.nimble
-
-      - name: Update version in src/ps1.nim
-        run: |
-          sed -i 's/Version\s*=\s*"[^"]*"/Version     = "${{ steps.ver.outputs.next }}"/' src/ps1.nim
+          sed -i 's/^VERSION="[^"]*"/VERSION="${{ steps.ver.outputs.next }}"/' ps1
 
       - name: Commit, tag, and sync release branch
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add ps1.nimble src/ps1.nim
+          git add ps1
           git commit -m "chore: bump version to v${{ steps.ver.outputs.next }}"
           git tag "v${{ steps.ver.outputs.next }}"
           git push origin HEAD --tags
