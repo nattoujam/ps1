@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-VERSION="0.2.2"
+VERSION="0.2.3"
 
 CONFIG_DIR="${HOME}/.config/nattoujam/ps1"
 PRESETS="${CONFIG_DIR}/presets"
