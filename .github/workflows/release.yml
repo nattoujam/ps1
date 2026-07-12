@@ -1,4 +1,4 @@
-name: Version Bump
+name: Release
 
 on:
   workflow_dispatch:
@@ -20,7 +20,7 @@ permissions:
   contents: write
 
 jobs:
-  bump:
+  release:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
@@ -57,3 +57,13 @@ jobs:
           git tag "v${{ steps.ver.outputs.next }}"
           git push origin HEAD --tags
           git push origin HEAD:release --force
+
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v3
+        with:
+          tag_name: "v${{ steps.ver.outputs.next }}"
+          generate_release_notes: true
+          files: |
+            ps1
+            assets/presets
+            assets/helpers
