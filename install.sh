@@ -4,7 +4,7 @@ set -e
 REPO="nattoujam/ps1"
 BIN_DIR="/usr/local/bin"
 if [ -n "$SUDO_USER" ]; then
-  USER_HOME=$(getent passwd "$SUDO_USER" | cut -d: -f6)
+  USER_HOME=$(eval echo "~$SUDO_USER")
 else
   USER_HOME="$HOME"
 fi
