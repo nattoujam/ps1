@@ -7,13 +7,19 @@ Requires `bash` at runtime.
 ## Install
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/nattoujam/ps1/release/install.sh | sudo sh
+curl -fsSL https://raw.githubusercontent.com/nattoujam/ps1/release/install.sh | sh
 ```
 
-After install, add the following line to your `.zshrc` or `.bashrc`:
+`ps1` is installed to `~/.local/bin`. After install, add the following line to your `.zshrc` or `.bashrc`:
 
 ```bash
 [ -f ~/.config/nattoujam/ps1/current ] && source ~/.config/nattoujam/ps1/current
+```
+
+If `~/.local/bin` is not in your `PATH`, add this line too:
+
+```bash
+export PATH="$HOME/.local/bin:$PATH"
 ```
 
 ## Usage
