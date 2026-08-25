@@ -18,3 +18,33 @@ zsh.bloom=%F{170}%n@%m%f:%F{183}%~%f %F{218}$(ps1_git_branch)%f$PS1_NL$(ps1_prom
 
 bash.mellow=\[\e[38;5;153m\]\u@\h\[\e[0m\]:\[\e[38;5;157m\]\w\[\e[0m\] \[\e[38;5;223m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
 zsh.mellow=%F{153}%n@%m%f:%F{157}%~%f %F{223}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)
+
+bash.anemone=\[\e[38;5;197m\]\u@\h\[\e[0m\]:\[\e[38;5;140m\]\w\[\e[0m\] \[\e[38;5;218m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.anemone=%F{197}%n@%m%f:%F{140}%~%f %F{218}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)
+
+bash.bergamot=\[\e[38;5;214m\]\u@\h\[\e[0m\]:\[\e[38;5;149m\]\w\[\e[0m\] \[\e[38;5;222m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.bergamot=%F{214}%n@%m%f:%F{149}%~%f %F{222}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)
+
+bash.clover=\[\e[38;5;71m\]\u@\h\[\e[0m\]:\[\e[38;5;151m\]\w\[\e[0m\] \[\e[38;5;224m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.clover=%F{71}%n@%m%f:%F{151}%~%f %F{224}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)
+
+bash.beryl=\[\e[38;5;37m\]\u@\h\[\e[0m\]:\[\e[38;5;122m\]\w\[\e[0m\] \[\e[38;5;186m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.beryl=%F{37}%n@%m%f:%F{122}%~%f %F{186}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)
+
+bash.crystal=\[\e[38;5;117m\]\u@\h\[\e[0m\]:\[\e[38;5;195m\]\w\[\e[0m\] \[\e[38;5;189m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.crystal=%F{117}%n@%m%f:%F{195}%~%f %F{189}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)
+
+bash.diamond=\[\e[38;5;254m\]\u@\h\[\e[0m\]:\[\e[38;5;81m\]\w\[\e[0m\] \[\e[38;5;159m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.diamond=%F{254}%n@%m%f:%F{81}%~%f %F{159}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)
+
+bash.euclase=\[\e[38;5;69m\]\u@\h\[\e[0m\]:\[\e[38;5;117m\]\w\[\e[0m\] \[\e[38;5;153m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.euclase=%F{69}%n@%m%f:%F{117}%~%f %F{153}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)
+
+bash.flourite=\[\e[38;5;134m\]\u@\h\[\e[0m\]:\[\e[38;5;121m\]\w\[\e[0m\] \[\e[38;5;183m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.flourite=%F{134}%n@%m%f:%F{121}%~%f %F{183}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)
+
+bash.jasper=\[\e[38;5;167m\]\u@\h\[\e[0m\]:\[\e[38;5;180m\]\w\[\e[0m\] \[\e[38;5;143m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.jasper=%F{167}%n@%m%f:%F{180}%~%f %F{143}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)
+
+bash.olivin=\[\e[38;5;106m\]\u@\h\[\e[0m\]:\[\e[38;5;149m\]\w\[\e[0m\] \[\e[38;5;192m\]$(ps1_git_branch)\[\e[0m\]\n$(ps1_prompt_char)
+zsh.olivin=%F{106}%n@%m%f:%F{149}%~%f %F{192}$(ps1_git_branch)%f$PS1_NL$(ps1_prompt_char)

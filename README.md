@@ -32,15 +32,7 @@ ps1 help          # show help
 
 ## Presets
 
-| Name    | Description                          |
-|---------|--------------------------------------|
-| minimal | Path and prompt char only            |
-| simple  | no color                             |
-| default | default color theme                  |
-| ember   | Orange/purple color theme            |
-| slate   | Blue-gray color theme                |
-| bloom   | Pink/lavender color theme            |
-| mellow  | Soft blue/green color theme          |
+See **[PRESETS.md](PRESETS.md)** for visual previews and detailed color palette specifications of all presets.
 
 ## For Developers
 
