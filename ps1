@@ -1,7 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-VERSION="0.2.5"
+VERSION="0.3.0"
 
 REPO="nattoujam/ps1"
 RAW="https://raw.githubusercontent.com/${REPO}/release"
