@@ -27,6 +27,7 @@ export PATH="$HOME/.local/bin:$PATH"
 ```bash
 ps1 list          # list available presets (* = current)
 ps1 set <name>    # switch to a preset
+ps1 upgrade       # update ps1 and presets to the latest release
 ps1 help          # show help
 ```
 

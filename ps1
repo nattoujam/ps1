@@ -3,6 +3,9 @@ set -euo pipefail
 
 VERSION="0.2.5"
 
+REPO="nattoujam/ps1"
+RAW="https://raw.githubusercontent.com/${REPO}/release"
+
 CONFIG_DIR="${HOME}/.config/nattoujam/ps1"
 PRESETS="${CONFIG_DIR}/presets"
 CURRENT="${CONFIG_DIR}/current"
@@ -69,6 +72,42 @@ cmd_set() {
   echo "run 'source ~/.zshrc' or 'source ~/.bashrc' to apply"
 }
 
+cmd_upgrade() {
+  local self dir tmp remote_version f
+  self="${BASH_SOURCE[0]}"
+  dir=$(cd "$(dirname "$self")" && pwd)
+  self="${dir}/$(basename "$self")"
+
+  if [[ ! -w "$self" ]]; then
+    echo "ps1: cannot write ${self}" >&2
+    exit 1
+  fi
+
+  # 実行中のスクリプトを直接上書きすると bash の読み込みが壊れるため、
+  # 同一ディレクトリに落として mv で差し替える
+  tmp="${self}.new"
+  trap "rm -f '${tmp}' '${CONFIG_DIR}'/*.new" EXIT
+
+  curl -fsSL "${RAW}/ps1" -o "$tmp"
+  remote_version=$(grep '^VERSION=' "$tmp" | sed 's/.*"\(.*\)".*/\1/')
+  if [[ "$remote_version" == "$VERSION" ]]; then
+    echo "ps1: already up to date (${VERSION})"
+    return
+  fi
+
+  for f in presets helpers; do
+    curl -fsSL "${RAW}/assets/${f}" -o "${CONFIG_DIR}/${f}.new"
+  done
+
+  chmod 0755 "$tmp"
+  mv "$tmp" "$self"
+  for f in presets helpers; do
+    mv "${CONFIG_DIR}/${f}.new" "${CONFIG_DIR}/${f}"
+  done
+
+  echo "ps1: upgraded ${VERSION} -> ${remote_version}"
+}
+
 cmd_help() {
   echo "ps1 ${VERSION}"
   echo ""
@@ -77,6 +116,7 @@ cmd_help() {
   echo "commands:"
   echo "  list           list available presets"
   echo "  set <name>     switch to preset"
+  echo "  upgrade        update ps1 and presets to the latest release"
   echo "  help           show this help"
 }
 
@@ -96,6 +136,7 @@ main() {
       fi
       cmd_set "$2"
       ;;
+    upgrade) cmd_upgrade ;;
     help) cmd_help ;;
     *)
       echo "ps1: unknown command '${cmd}'" >&2
